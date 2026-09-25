@@ -6,6 +6,12 @@
     <p>Kategori: {{ $activity->category }}</p>
     <p>Status: {{ $activity->status }}</p>
     <p>{{ $activity->description }}</p>
+    <a href="{{ route('activities.edit', $activity) }}">Ubah</a>
 
+<form action="{{ route('activities.destroy', $activity) }}" method="POST" onsubmit="return confirm('Yakin hapus kegiatan ini?');">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Hapus</button>
+</form>
     <a href="{{ route('activities.index') }}">Kembali ke daftar</a>
 @endsection
